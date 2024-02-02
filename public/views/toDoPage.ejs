@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>To-Do List</title>
+</head>
+<body class="bg-green-200 h-screen flex items-center justify-center">
+
+    <div class="bg-green-300 p-16 rounded-3xl shadow-xl">
+        <p class="font-bold text-3xl mb-12 mt-0 text-center">To-Do List</p>
+        <% Tasks.forEach(task => { %>
+            <form action="/delete" method="post" class="mb-2">
+                <div class="flex items-center border-b border-green-900">
+                    <input type="checkbox" name="checkbox" value="<%=task._id%>" class="mr-2" onchange="this.form.submit()">
+                    <p class="inline-block"><%= task.task %></p>
+                </div>
+            </form>
+        <% }) %>
+    
+        <form action="/" method="post" class="mt-4">
+            <input type="text" name="newTask" placeholder="New Task" class="shadow-md mr-2 p-2 rounded-xl outline-green-700">
+            <button type="submit" name="list" value="ToDoList" class="shadow-md p-2 px-4 bg-green-500 text-white rounded-xl hover:bg-green-700">+</button>
+        </form>
+    </div>
+    
+</body>
+</html>
